@@ -1,0 +1,7 @@
+trade:
+  file:
+    input: files/input.json
+    output: files/output.json
+    error: files/error.json
+  error:
+    missing: Property Value is not present

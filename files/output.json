@@ -1,0 +1,37 @@
+[ {
+  "tradeId" : "51849291",
+  "tradeStatus" : "NEW",
+  "tradeDate" : "2021-05-17T21:11:17.265000+0100",
+  "sideId" : "1",
+  "amount" : 250.00,
+  "price" : 10.2600,
+  "nominal" : 2565.000000,
+  "currency" : "USD",
+  "counterpartyId" : "123XYZ",
+  "environment" : "BETA",
+  "side" : "Seller"
+}, {
+  "tradeId" : "51849291",
+  "tradeStatus" : "NEW",
+  "tradeDate" : "2021-05-17T21:11:17.265000+0100",
+  "sideId" : "2",
+  "amount" : 150.00,
+  "price" : 7.3100,
+  "nominal" : 1096.500000,
+  "currency" : "GBP",
+  "counterpartyId" : "456abc",
+  "environment" : "BETA",
+  "side" : "Buyer"
+}, {
+  "tradeId" : "51849291",
+  "tradeStatus" : "NEW",
+  "tradeDate" : "2021-05-17T21:11:17.265000+0100",
+  "sideId" : "3",
+  "amount" : 100.00,
+  "price" : 7.2500,
+  "nominal" : 725.000000,
+  "currency" : "GBP",
+  "counterpartyId" : "789opv",
+  "environment" : "BETA",
+  "side" : "Buyer"
+} ]
