@@ -10,11 +10,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.function.Consumer;
+
 /**
  * Description: This Util class print the JSON message to Console, Error and Output file
  */
 public final class PrintUtils {
-   public PrintUtils(){}
+    public PrintUtils() {
+    }
 
     public static Consumer<List<TradeResult>> printToConsole(ObjectMapper mapper) {
         return (results) -> {
@@ -28,7 +30,7 @@ public final class PrintUtils {
         };
     }
 
-    public static Consumer<List<TradeResult>> printToFile(String fileName,ObjectMapper mapper) {
+    public static Consumer<List<TradeResult>> printToFile(String fileName, ObjectMapper mapper) {
         return (results) -> {
 
             try {
@@ -42,7 +44,7 @@ public final class PrintUtils {
 
     }
 
-    public static Consumer<List<TradeError>> printToErrorFile(String fileName,ObjectMapper mapper) {
+    public static Consumer<List<TradeError>> printToErrorFile(String fileName, ObjectMapper mapper) {
         return (errorList) -> {
 
             try {

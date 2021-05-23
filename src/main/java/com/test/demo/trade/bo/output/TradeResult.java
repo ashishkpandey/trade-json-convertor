@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
+
 /**
  * Description: This is Result Business object,
  * using this output json will generated
@@ -17,11 +17,6 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 public class TradeResult {
-    //used to support the test cases
-    TradeResult() {
-
-    }
-
     @JsonProperty("tradeId")
     private String tradeId;
     @JsonProperty("tradeStatus")
@@ -44,5 +39,9 @@ public class TradeResult {
     private String environment;
     @JsonProperty("side")
     private String side;
+    //used to support the test cases
+    TradeResult() {
+
+    }
 }
 

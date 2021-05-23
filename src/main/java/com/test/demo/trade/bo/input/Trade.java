@@ -3,7 +3,6 @@ package com.test.demo.trade.bo.input;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.Date;
 import java.util.List;
 
 @Data

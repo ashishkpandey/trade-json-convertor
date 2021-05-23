@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * Description: Unit test for PrintUtils class
  */
@@ -42,8 +43,7 @@ class PrintUtilsTest {
         {
             List<TradeResult> tradeResultList = null;
             PrintStream originalOut = System.out;
-           ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
+            ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 
             Given:

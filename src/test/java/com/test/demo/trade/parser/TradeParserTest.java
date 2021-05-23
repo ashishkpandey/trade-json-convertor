@@ -2,10 +2,10 @@ package com.test.demo.trade.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.test.demo.util.TestUtil;
+import com.test.demo.config.ApplicationProperties;
 import com.test.demo.trade.bo.error.TradeError;
 import com.test.demo.trade.bo.output.TradeResult;
-import com.test.demo.config.ApplicationProperties;
+import com.test.demo.util.TestUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Description: Unit test for TradeParser class
@@ -37,7 +37,7 @@ class TradeParserTest {
         applicationProperties.setFile(file);
         error = new ApplicationProperties.Error();
         applicationProperties.setError(error);
-        tradeParser = new TradeParser(applicationProperties,mapper);
+        tradeParser = new TradeParser(applicationProperties, mapper);
     }
 
     @AfterEach
@@ -144,23 +144,21 @@ class TradeParserTest {
             try {
                 tradeParser.parse();
             } catch (com.fasterxml.jackson.databind.exc.InvalidFormatException exception) {
-                assertEquals ("Cannot deserialize value of type `com.test.demo.trade.bo.input.TradeSide$Side` from String \"SellerWrongValue\": not one of the values accepted for Enum class: [Buyer, Seller]"
-                ,exception.getMessage().substring(0, 173)
-                    );
+                assertEquals("Cannot deserialize value of type `com.test.demo.trade.bo.input.TradeSide$Side` from String \"SellerWrongValue\": not one of the values accepted for Enum class: [Buyer, Seller]"
+                        , exception.getMessage().substring(0, 173)
+                );
             }
             Then:
             {
                 try {
                     List<TradeResult> tradeResults = TestUtil.getResult(file.getOutput());
-                }catch (FileNotFoundException exception)
-                {
-                    assertEquals("test/output/output-wrong-enum.json (No such file or directory)",exception.getMessage());
+                } catch (FileNotFoundException exception) {
+                    assertEquals("test/output/output-wrong-enum.json (No such file or directory)", exception.getMessage());
                 }
                 try {
                     List<TradeError> tradeErrors = TestUtil.getError(file.getError());
-                }catch (FileNotFoundException exception)
-                {
-                    assertEquals("test/error/error-wrong-enum.json (No such file or directory)",exception.getMessage());
+                } catch (FileNotFoundException exception) {
+                    assertEquals("test/error/error-wrong-enum.json (No such file or directory)", exception.getMessage());
                 }
 
             }
@@ -208,7 +206,6 @@ class TradeParserTest {
     }
 
 
-
     @Test
     @DisplayName("Failure Scenario - InputFileMissing")
     void parseFailInputFileMissing() throws IOException, URISyntaxException {
@@ -228,22 +225,20 @@ class TradeParserTest {
             try {
                 tradeParser.parse();
             } catch (java.io.FileNotFoundException exception) {
-                assertEquals ("test/input/input-FileMissing.json (No such file or directory)",exception.getMessage()
+                assertEquals("test/input/input-FileMissing.json (No such file or directory)", exception.getMessage()
                 );
             }
             Then:
             {
                 try {
                     List<TradeResult> tradeResults = TestUtil.getResult(file.getOutput());
-                }catch (FileNotFoundException exception)
-                {
-                    assertEquals("test/output/output-FileMissing.json (No such file or directory)",exception.getMessage());
+                } catch (FileNotFoundException exception) {
+                    assertEquals("test/output/output-FileMissing.json (No such file or directory)", exception.getMessage());
                 }
                 try {
                     List<TradeError> tradeErrors = TestUtil.getError(file.getError());
-                }catch (FileNotFoundException exception)
-                {
-                    assertEquals("test/error/error-FileMissing.json (No such file or directory)",exception.getMessage());
+                } catch (FileNotFoundException exception) {
+                    assertEquals("test/error/error-FileMissing.json (No such file or directory)", exception.getMessage());
                 }
 
             }

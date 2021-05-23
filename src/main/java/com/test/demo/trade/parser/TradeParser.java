@@ -1,10 +1,10 @@
 package com.test.demo.trade.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.demo.config.ApplicationProperties;
 import com.test.demo.trade.bo.error.TradeError;
 import com.test.demo.trade.bo.input.Root;
 import com.test.demo.trade.bo.output.TradeResult;
-import com.test.demo.config.ApplicationProperties;
 import com.test.demo.trade.util.PrintUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -31,12 +31,11 @@ public class TradeParser {
     private final ObjectMapper mapper;
 
 
-
     public void parse() throws IOException {
 
         List<TradeError> errorList = new ArrayList<>();
-        PrintUtils.printToFile(applicationProperties.getFile().getOutput(),mapper).andThen(PrintUtils.printToConsole(mapper)).accept(convertToResult().apply(getRoot(applicationProperties.getFile().getInput()), errorList));
-        PrintUtils.printToErrorFile(applicationProperties.getFile().getError(),mapper).accept(errorList);
+        PrintUtils.printToFile(applicationProperties.getFile().getOutput(), mapper).andThen(PrintUtils.printToConsole(mapper)).accept(convertToResult().apply(getRoot(applicationProperties.getFile().getInput()), errorList));
+        PrintUtils.printToErrorFile(applicationProperties.getFile().getError(), mapper).accept(errorList);
     }
 
     /*
@@ -46,6 +45,7 @@ public class TradeParser {
 
         return mapper.readValue(new File(fileName), Root.class);
     }
+
     /*
        Converts the  Root Object into Result object
         */
@@ -72,6 +72,7 @@ public class TradeParser {
                         .collect(Collectors.toList());
 
     }
+
     /*
        Write the message into error list, and
         later or that can be written into the error file
