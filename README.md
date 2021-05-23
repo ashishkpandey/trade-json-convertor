@@ -7,5 +7,4 @@ This project converts JSON file which contains array to Flat Json structure
 4. Program will produce output and error json.
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
 mvn clean install
